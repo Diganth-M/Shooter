@@ -1,7 +1,7 @@
 (()=>{"use strict";
 const canvas=document.getElementById("gameCanvas"),ctx=canvas.getContext("2d"),$=id=>document.getElementById(id);
 const level=$("level"),left=$("bottles"),ammo=$("bullets"),scoreNode=$("score"),bestNode=$("best"),message=$("message"),countdown=$("countdown"),crosshair=$("crosshair"),hint=$("hint"),tensionFill=$("tensionFill"),tensionValue=$("tensionValue"),pullSpeedNode=$("pullSpeed"),tensionState=$("tensionState"),timingLabel=$("timingLabel"),roundName=$("roundName");
-let W=0,H=0,dpr=1,round=1,score=0,best=+(localStorage.getItem("archeryBest")||0),arrows=0,targets=[],particles=[],flights=[],running=false,paused=false,sound=true,aim={x:0,y:0},last=0,elapsed=0,combo=0,angle=0,config,charging=false,charge=0,chargeStart=0,lastCharge=0,pullSpeed=0,perfectWindow=0;
+let W=0,H=0,dpr=1,round=1,score=0,best=+(function(){try{return localStorage.getItem("archeryBest")||0}catch(e){return 0}})(),arrows=0,targets=[],particles=[],flights=[],running=false,paused=false,sound=true,aim={x:0,y:0},last=0,elapsed=0,combo=0,angle=0,config,charging=false,charge=0,chargeStart=0,lastCharge=0,pullSpeed=0,perfectWindow=0;
 const rounds=[
 {name:"FIRST FLIGHT",count:5,arrows:7,turn:.55,size:1.08,window:.20},
 {name:"STEADY HAND",count:6,arrows:7,turn:.70,size:1.04,window:.17},
@@ -10,7 +10,7 @@ const rounds=[
 {name:"PRECISION RUN",count:9,arrows:10,turn:1.20,size:.94,window:.105},
 {name:"MASTER ARCHER",count:10,arrows:11,turn:1.4,size:.91,window:.09},
 {name:"GRAND FINALE",count:12,arrows:13,turn:1.65,size:.88,window:.075}];
-function resize(){const r=canvas.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;canvas.width=Math.max(1,Math.round(W*dpr));canvas.height=Math.max(1,Math.round(H*dpr));ctx.setTransform(dpr,0,0,dpr,0,0);if(!aim.x){aim.x=W*.5;aim.y=H*.38}placeCrosshair()}
+function resize(){const r=canvas.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;canvas.width=Math.max(1,Math.round(W*dpr));canvas.height=Math.max(1,Math.round(H*dpr));ctx.setTransform(dpr,0,0,dpr,0,0);if(!aim.x){aim.x=W*.76;aim.y=H*.37}placeCrosshair()}
 addEventListener("resize",resize);
 function fmt(v){return String(Math.max(0,Math.floor(v))).padStart(6,"0")}
 function hud(){level.textContent=round;left.textContent=targets.filter(t=>t.alive).length+"/"+targets.length;ammo.textContent=arrows;scoreNode.textContent=fmt(score);bestNode.textContent=fmt(best);roundName.textContent=config.name}
@@ -25,7 +25,7 @@ function updateTension(){const p=Math.round(charge*100);tensionFill.style.width=
 function fx(hit){if(!sound)return;try{window.archeryAudio ||= new(window.AudioContext||window.webkitAudioContext)();const o=archeryAudio.createOscillator(),g=archeryAudio.createGain(),t=archeryAudio.currentTime;o.connect(g);g.connect(archeryAudio.destination);o.type="triangle";o.frequency.setValueAtTime(hit?780:230,t);o.frequency.exponentialRampToValueAtTime(hit?250:90,t+.18);g.gain.setValueAtTime(.045,t);g.gain.exponentialRampToValueAtTime(.001,t+.19);o.start();o.stop(t+.2)}catch(e){}}
 function burst(x,y){for(let i=0;i<24;i++){const a=Math.random()*Math.PI*2,v=1+Math.random()*4;particles.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-1,life:1,size:1+Math.random()*3})}}
 function panel(title,body,button,fn){message.innerHTML="<h2>"+title+"</h2><p>"+body+"</p><button>"+button+"</button>";message.classList.remove("hidden");message.querySelector("button").onclick=()=>{message.classList.add("hidden");fn()}}
-function finish(win,reason){running=false;charging=false;charge=0;updateTension();if(win){const bonus=arrows*150+combo*60+500;score+=bonus;if(score>best){best=score;localStorage.setItem("archeryBest",best)}hud();setTimeout(()=>panel("RACK CLEARED","ONE CLEAN RELEASE · CONSERVATION BONUS +"+bonus,round<7?"NEXT ROUND →":"PLAY AGAIN",()=>startRound(round<7?round+1:1)),300)}else setTimeout(()=>panel("RESET YOUR RHYTHM",reason+" · "+targets.filter(t=>t.alive).length+" TARGETS REMAIN","RETRY ROUND",()=>startRound(round)),300)}
+function finish(win,reason){running=false;charging=false;charge=0;updateTension();if(win){const bonus=arrows*150+combo*60+500;score+=bonus;if(score>best){best=score;try{localStorage.setItem("archeryBest",best)}catch(e){}}hud();setTimeout(()=>panel("RACK CLEARED","ONE CLEAN RELEASE · CONSERVATION BONUS +"+bonus,round<7?"NEXT ROUND →":"PLAY AGAIN",()=>startRound(round<7?round+1:1)),300)}else setTimeout(()=>panel("RESET YOUR RHYTHM",reason+" · "+targets.filter(t=>t.alive).length+" TARGETS REMAIN","RETRY ROUND",()=>startRound(round)),300)}
 function aimPoint(e){const r=canvas.getBoundingClientRect();aim.x=Math.max(0,Math.min(W,e.clientX-r.left));aim.y=Math.max(0,Math.min(H,e.clientY-r.top));placeCrosshair()}
 function placeCrosshair(){crosshair.style.left=aim.x+"px";crosshair.style.top=aim.y+"px"}
 function beginDraw(){if(!running||paused||arrows<=0||charging)return;charging=true;chargeStart=performance.now();lastCharge=chargeStart;pullSpeed=0;updateTension();hint.textContent="TENSION BUILDING · RELEASE WHEN THE RACK IS VERTICAL"}
