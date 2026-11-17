@@ -4,45 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#080d18">
-<meta name="description" content="BOTTTLE SHOOTER — enter the range, take aim, and beat your best score.">
-<title>BOTTTLE SHOOTER — The Range</title>
+<meta name="description" content="ARCHERY — enter the range, take aim, and beat your best score.">
+<title>ARCHERY — The Range</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 <main class="app-shell">
   <header class="topbar">
-    <a class="brand" href="#" aria-label="Bottle Shooter home">
+    <a class="brand" href="#" aria-label="Archery home">
       <span class="brand-mark"><span>✳</span></span>
-      <span class="brand-copy"><strong>BOTTTLE<span>SHOOTER</span></strong><small>THE RANGE / ARCADE EDITION</small></span>
+      <span class="brand-copy"><strong>ARCHERY</strong><small>PRECISION RANGE / ARCADE EDITION</small></span>
     </a>
     <div class="top-right"><span class="live-pill"><i></i> RANGE OPEN</span><div class="top-actions"><button id="soundBtn" class="icon-btn" aria-label="Toggle sound" title="Sound">♫</button><button id="pauseBtn" class="icon-btn" aria-label="Pause game" title="Pause">Ⅱ</button></div></div>
   </header>
 
   <section class="intro">
-    <div><p class="eyebrow">YOUR AIM. YOUR RECORD. YOUR RANGE.</p><h1>READY, <em>AIM,</em> FIRE.</h1><p class="intro-copy">Track the throw. Read the movement. Make every shot count.</p></div>
+    <div><p class="eyebrow">DRAW. BREATHE. RELEASE.</p><h1>DRAW, <em>AIM,</em> RELEASE.</h1><p class="intro-copy">Build your draw. Read the rotation. Make every arrow count.</p></div>
     <div class="intro-tag"><span>01 — 07</span><small>CHALLENGE SERIES</small></div>
   </section>
 
   <section class="hud" aria-label="Game statistics">
     <div class="stat round-stat"><span class="stat-label">ROUND</span><div class="stat-value"><strong id="level">1</strong><small> / 07</small></div></div>
     <div class="stat"><span class="stat-label">TARGETS HIT</span><strong id="bottles">0/0</strong></div>
-    <div class="stat"><span class="stat-label">AMMO LEFT</span><strong id="bullets">0</strong></div>
+    <div class="stat"><span class="stat-label">ARROWS LEFT</span><strong id="bullets">0</strong></div>
     <div class="stat score-stat"><span class="stat-label">YOUR SCORE</span><strong id="score">000000</strong></div>
     <div class="stat best"><span class="stat-label">PERSONAL BEST</span><strong id="best">000000</strong></div>
   </section>
 
   <section class="game-section">
-    <div class="game-heading"><div><span class="section-kicker">LIVE SESSION</span><h2>THE SHOOTING FLOOR</h2></div><div class="target-legend"><span><i class="dot bottle"></i> GLASS</span><span><i class="dot bird"></i> FLIGHT</span><span><i class="dot plate"></i> CLAY</span></div></div>
+    <div class="game-heading"><div><span class="section-kicker">LIVE SESSION</span><h2>THE ARCHERY RANGE</h2></div><div class="target-legend"><span><i class="dot bottle"></i> GLASS</span><span><i class="dot bird"></i> FLIGHT</span><span><i class="dot plate"></i> CLAY</span></div></div>
     <div class="game-wrap">
-      <div class="stage-topline"><span><i></i> LIVE RANGE</span><span>TRACK • AIM • SHOOT</span></div>
-      <canvas id="gameCanvas" aria-label="Bottle shooter game area"></canvas>
+      <div class="stage-topline"><span><i></i> LIVE RANGE</span><span>DRAW • AIM • RELEASE</span></div>
+      <canvas id="gameCanvas" aria-label="Archery game area"></canvas>
       <div id="message" class="message hidden"></div>
       <div id="countdown" class="countdown hidden"></div>
       <div class="crosshair" id="crosshair"><span></span></div>
-      <div class="hint" id="hint">AIM • CLICK / TAP TO FIRE</div>
+      <div class="hint" id="hint">HOLD TO DRAW • RELEASE TO SHOOT</div><div class="draw-meter" id="drawMeter"><div class="draw-head"><span>DRAW POWER</span><strong id="drawPercent">0%</strong></div><div class="draw-track"><i id="drawFill"></i></div><div class="draw-foot"><span id="drawSpeed">PULL SPEED —</span><span id="shotGrade">WAITING</span></div></div>
       <div class="stage-corner">BS / 001</div>
     </div>
   </section>
@@ -52,8 +52,8 @@
     <div class="target-types"><span class="type-label">TARGETS</span><span class="type-chip">◈ BOTTLES</span><span class="type-chip">⌁ BIRDS</span><span class="type-chip">◎ CLAY</span></div>
     <button id="restartBtn" class="secondary-btn"><span>↻</span> RESTART RUN</button>
   </footer>
-  <div class="page-foot"><span>BOTTTLE SHOOTER <b>•</b> ARCADE RANGE</span><span>STAY SHARP. SHOOT SMART.</span></div>
+  <div class="page-foot"><span>ARCHERY <b>•</b> ARCADE RANGE</span><span>STEADY HANDS. TRUE AIM.</span></div>
 </main>
-<script src="game.js?v=4"></script>
+<script src="game.js?v=5"></script>
 </body>
 </html>
