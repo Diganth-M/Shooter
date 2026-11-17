@@ -78,3 +78,10 @@ button{font:inherit}
 .draw-head,.draw-foot{display:flex;justify-content:space-between;align-items:center;gap:8px}.draw-head span,.draw-foot{font-size:7px;font-weight:800;letter-spacing:1.4px;color:#a5b4c5}.draw-head strong{font:800 18px "Barlow Condensed",sans-serif;color:#c7f36b}
 .draw-track{height:6px;background:#ffffff17;border-radius:9px;overflow:hidden;margin:7px 0}.draw-track i{display:block;width:0;height:100%;background:linear-gradient(90deg,#67d9d0,#c7f36b,#f0d17b);box-shadow:0 0 12px #c7f36b88;border-radius:9px;transition:width .04s linear}.draw-foot{font-size:6px;letter-spacing:1px}.draw-meter.charging{opacity:1;border-color:#c7f36b99;box-shadow:0 0 22px #c7f36b18}
 @media(max-width:540px){.draw-meter{left:10px;bottom:31px;width:48%;padding:8px}.draw-head span{font-size:6px}.draw-foot{font-size:5px}}
+
+/* Archery controls: the bow stays ready; a click/tap releases an arrow. */
+.draw-meter{display:none!important}
+.game-wrap{touch-action:pan-y}
+#gameCanvas{cursor:crosshair;touch-action:pan-y}
+.crosshair{pointer-events:none}
+.hint{z-index:4;background:#07111bc9;padding:7px 12px;border:1px solid #c7f36b33;border-radius:20px;bottom:12px}
