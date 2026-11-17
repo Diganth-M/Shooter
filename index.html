@@ -6,14 +6,16 @@
 <meta name="theme-color" content="#08111f">
 <meta name="description" content="SHOOTER — NIGHT RANGE — an arcade bottle shooting game.">
 <title>SHOOTER — NIGHT RANGE</title>
-<link rel="stylesheet" href="style.css?v=shooter-restore-2">
+<link rel="stylesheet" href="style.css?v=ui-refresh-2026-11">
 </head>
 <body>
 <main class="app-shell">
 <header class="topbar">
-  <div class="brand"><span class="brand-mark">🎯</span><div><h1>SHOOTER</h1><span>NIGHT RANGE</span></div></div>
+  <div class="brand-copy"><span class="eyebrow">ARCADE CHALLENGE / 07 ROUNDS</span>
+  <div class="brand"><span class="brand-mark">✦</span><div><h1>SHOOTER</h1><span>THE NIGHT RANGE</span></div></div></div>
   <div class="top-actions"><button id="soundBtn" class="icon-btn">🔊</button><button id="pauseBtn" class="icon-btn">Ⅱ</button></div>
 </header>
+<div class="section-heading"><div><span class="eyebrow">LIVE SESSION</span><h2>THE RANGE</h2></div><span class="live-pill"><i></i> LIVE</span></div>
 <section class="hud">
   <div class="stat"><span>ROUND</span><strong id="level">1</strong></div>
   <div class="stat"><span>TARGETS</span><strong id="bottles">0/0</strong></div>
@@ -21,16 +23,16 @@
   <div class="stat"><span>SCORE</span><strong id="score">000000</strong></div>
   <div class="stat best"><span>BEST</span><strong id="best">000000</strong></div>
 </section>
-<section class="game-wrap">
+<section class="game-section"><div class="game-topline"><span><i></i> TARGET FIELD</span><span>TRACK · AIM · FIRE</span></div><div class="game-wrap">
   <canvas id="gameCanvas" aria-label="Arcade shooter game area"></canvas>
   <div id="message" class="message hidden"></div>
   <div id="countdown" class="countdown hidden"></div>
   <div class="crosshair" id="crosshair"><span></span></div>
   <div class="hint" id="hint">AIM • CLICK / TAP TO FIRE</div>
-</section>
+</div></section>
 <footer class="controls">
-  <div><b>How to play</b><span>Shoot every airborne bottle, bird, and clay plate before your bullets run out.</span></div>
-  <button id="restartBtn" class="secondary-btn">↻ RESTART</button>
+  <div class="objective"><span class="objective-icon">◎</span><div><b>YOUR OBJECTIVE</b><span>Shoot every airborne bottle, bird and clay plate before your bullets run out.</span></div></div>
+  <button id="restartBtn" class="secondary-btn">↻ &nbsp; RESTART RUN</button>
 </footer>
 </main>
 <script src="game.js?v=shooter-restore-2"></script>
