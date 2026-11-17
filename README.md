@@ -1,22 +1,25 @@
-# 🏹 ARCHERY — Precision Range
+# 🏹 ARCHERY — The Precision Range
 
-A responsive browser archery game focused on timing, aim, and precision. The bow is always ready: aim with the pointer, then click or tap to release an arrow at the right moment.
+A browser-based archery timing challenge. Draw the bow, watch the wooden target rack rotate, and release at the exact moment its straight line aligns with your arrow.
 
-## Features
-- Always-ready bow with a visible arrow; no draw-and-hold step
-- Aim by moving the mouse or finger
-- Click or tap once to launch an arrow
-- Bottles and clay plates arranged in a visible rotating straight-line formation
-- Precision scoring for centre hits and combo streaks
-- Limited arrows with a conservation bonus for clearing targets efficiently
-- Seven progressive rounds with increasing rotation speed and target count
-- Hit particles, sound effects, pause controls, and saved personal best
-- Responsive canvas; no backend required; GitHub Pages ready
+## Gameplay
+- A visible wooden rack revolves around a central pivot.
+- Bottles and clay plates stay fixed in a straight line along the rack.
+- Hold the mouse or touch screen to draw the bow; the bow limbs and string visibly flex as tension rises.
+- The HUD displays draw tension and pull speed.
+- Aim at the rack's centre and release when the rack points along the arrow's flight path.
+- A well-timed, sufficiently strong shot can pierce multiple aligned targets in one release.
+- Seven rounds progressively increase target count and rotation speed.
+- Score rewards multi-target hits, bow tension, alignment timing, and conserving arrows.
 
 ## Controls
-- Move mouse or finger: aim the bow
-- Click or tap: release one arrow
-- Ⅱ: pause · ♫: sound · RESTART RUN: start again
+- Move pointer / finger: aim
+- Hold mouse / touch: build bow tension
+- Release: fire one arrow
+- Pause and sound controls are available in the header; restart begins from Round 1.
 
 ## Scoring
-Hit targets along the arrow's flight path. Centre hits earn more points, consecutive hits build combos, and unused arrows add a round-clear bonus. A miss consumes an arrow, so timing and precision matter.
+A clean aligned shot can clear several targets at once. Stronger draws increase shot points, multi-target hits add a chain bonus, and unused arrows add a round-clear bonus. Poorly timed releases can miss, so watch the rotating rack and release at the right moment.
+
+## Run locally
+Open `index.html` in a modern browser, or publish the repository with GitHub Pages. No backend is required.
