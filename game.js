@@ -17,7 +17,8 @@ function hud(){level.textContent=round;left.textContent=targets.filter(t=>t.aliv
 function makeTargets(){targets=[];for(let i=0;i<config.count;i++)targets.push({kind:i%3===2?"plate":"bottle",alive:true,index:i})}
 function rackCenter(){return{x:W*.76,y:H*.37}}
 function targetPos(t){const c=rackCenter(),spacing=Math.min(43,(W*.39)/Math.max(1,config.count-1)),offset=(t.index-(config.count-1)/2)*spacing;return{x:c.x+Math.cos(angle)*offset,y:c.y+Math.sin(angle)*offset}}
-function shotVector(){const o=origin(),dx=aim.x-o.x,dy=aim.y-o.y,len=Math.hypot(dx,dy)||1;return{x:dx/len,y:dy/len}}\nfunction aligned(){const v=shotVector(),axisX=Math.cos(angle),axisY=Math.sin(angle);return Math.abs(axisX*(-v.y)+axisY*v.x)<config.window}
+function shotVector(){const o=origin(),dx=aim.x-o.x,dy=aim.y-o.y,len=Math.hypot(dx,dy)||1;return{x:dx/len,y:dy/len}}
+function aligned(){const v=shotVector(),axisX=Math.cos(angle),axisY=Math.sin(angle);return Math.abs(axisX*(-v.y)+axisY*v.x)<config.window}
 function startRound(n){round=n;config=rounds[n-1];arrows=config.arrows;elapsed=0;angle=-.45;combo=0;charge=0;charging=false;pullSpeed=0;particles=[];flights=[];makeTargets();running=false;paused=false;hud();$("pauseBtn").textContent="Ⅱ";hint.textContent="HOLD TO DRAW · RELEASE WHEN THE RACK POINTS AT YOU";updateTension();let k=2;countdown.classList.remove("hidden");countdown.textContent=k;const timer=setInterval(()=>{k--;if(k>0)countdown.textContent=k;else{clearInterval(timer);countdown.textContent="DRAW";setTimeout(()=>{countdown.classList.add("hidden");running=true},350)}},550)}
 function origin(){return{x:W*.145,y:H*.78}}
 function updateTension(){const p=Math.round(charge*100);tensionFill.style.width=p+"%";tensionValue.innerHTML=p+'<span>%</span>';pullSpeedNode.textContent=charging?"PULL SPEED "+Math.round(pullSpeed)+"%/s":"PULL SPEED —";tensionState.textContent=charging?(charge>.9?"MAX TENSION":charge>.6?"STRONG DRAW":"BUILDING"):"READY"}
