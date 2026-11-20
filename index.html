@@ -15,6 +15,14 @@
   <div class="brand"><span class="brand-mark">✦</span><div><h1>SHOOTER</h1><span>THE NIGHT RANGE</span></div></div></div>
   <div class="top-actions"><button id="soundBtn" class="icon-btn" aria-label="Toggle sound" title="Sound">🔊</button><button id="pauseBtn" class="icon-btn" aria-label="Pause game" title="Pause">Ⅱ</button><button id="exitBtn" class="icon-btn" aria-label="Exit level" title="Exit">⌂</button></div>
 </header>
+<section id="homeScreen" class="home-screen">
+  <div class="home-copy"><span class="eyebrow">THE RANGE IS CALLING</span><h2>LOCK. AIM.<br><em>DOMINATE.</em></h2><p>Take on seven shooting rounds. Hit flying targets, build your score and become the champion of the night range.</p>
+  <div class="home-actions"><button id="startGameBtn" class="primary-btn">START GAME <span>→</span></button><button id="openShopBtn" class="secondary-btn">WEAPON SHOP</button></div>
+  <div class="home-facts"><span>✦ 7 CHALLENGE ROUNDS</span><span>◎ BONUS TARGETS FROM ROUND 5</span><span>◈ EARN COINS & UPGRADE</span></div></div>
+  <div class="home-art" aria-hidden="true"><div class="target-ring ring-one"></div><div class="target-ring ring-two"></div><div class="target-ring ring-three"></div><div class="home-cross">+</div><div class="home-stamp">NIGHT<br>RANGE<br><b>07</b></div></div>
+  <div class="home-bottom"><div><span>YOUR BEST SCORE</span><strong id="homeBest">000000</strong></div><div><span>UNLOCKED ROUNDS</span><strong id="homeUnlocked">01 / 07</strong></div><div><span>YOUR COINS</span><strong id="homeCoins">0 ◈</strong></div></div>
+</section>
+<div id="gameScreen" class="hidden">
 <div class="section-heading"><div><span class="eyebrow">LIVE SESSION</span><h2>THE RANGE</h2></div><span class="live-pill"><i></i> LIVE</span></div>
 <section class="hud">
   <div class="stat"><span>ROUND</span><strong id="level">1</strong></div>
@@ -34,6 +42,7 @@
   <div class="objective"><span class="objective-icon">◎</span><div><b>YOUR OBJECTIVE</b><span>Shoot every airborne bottle, bird and clay plate before your bullets run out.</span></div></div>
   <button id="restartBtn" class="secondary-btn">↻ &nbsp; RESTART RUN</button>
 </footer>
+</div>
 </main>
 <script src="game.js?v=shooter-restore-2"></script>
 </body>
