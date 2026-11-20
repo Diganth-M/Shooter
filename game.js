@@ -44,8 +44,8 @@ function loop(now){const dt=Math.min(.035,(now-last)/1000||0);last=now;update(no
 function move(e){const r=c.getBoundingClientRect(),p=e.touches?e.touches[0]:e;mouse.x=Math.max(0,Math.min(W,p.clientX-r.left));mouse.y=Math.max(0,Math.min(H,p.clientY-r.top));positionCrosshair()}
 function positionCrosshair(){cross.style.left=mouse.x+"px";cross.style.top=mouse.y+"px"}
 c.addEventListener("pointermove",move);c.addEventListener("pointerdown",e=>{move(e);shoot()});c.addEventListener("touchstart",e=>{e.preventDefault();move(e);shoot()},{passive:false});
-$("pauseBtn").onclick=()=>{if(!running)return;paused=!paused;$("pauseBtn").textContent=paused?"▶":"Ⅱ";hint.textContent=paused?"PAUSED":"THROWER ACTIVE • TRACK THE AIRBORNE TARGETS"};
+$("pauseBtn").onclick=()=>{if(!running&&!paused)return;if(!paused){paused=true;$("pauseBtn").textContent="▶";hint.textContent="GAME PAUSED";showPanel("PAUSED","Your targets and timer are frozen. Take your time.","RESUME GAME",()=>{paused=false;running=true;$("pauseBtn").textContent="Ⅱ";hint.textContent="THROWER ACTIVE • TRACK THE AIRBORNE TARGETS"})}else{paused=false;running=true;$("pauseBtn").textContent="Ⅱ";msg.classList.add("hidden");hint.textContent="THROWER ACTIVE • TRACK THE AIRBORNE TARGETS"}};
 $("soundBtn").onclick=()=>{sound=!sound;$("soundBtn").textContent=sound?"🔊":"🔇"};
-$("restartBtn").onclick=()=>{msg.classList.add("hidden");startRound(1)};
+$("restartBtn").onclick=()=>{msg.classList.add("hidden");startRound(round)};$("exitBtn").onclick=()=>{running=false;paused=false;$("pauseBtn").textContent="Ⅱ";showPanel("SESSION EXITED","Your current round has been stopped. Return to the range whenever you're ready.","RETURN TO RANGE",()=>startRound(1))};
 resize();startRound(1);requestAnimationFrame(loop);
 })();
